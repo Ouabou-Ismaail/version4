@@ -1,0 +1,183 @@
+/* Conteneur principal */
+
+.profile-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Barre en haut avec texte défilant */
+  .swipe-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  
+  /* Bordure animée autour de l'écran */
+  .animated-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: borderAnimation 5s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframe borderAnimation {
+    0% {
+      border-color: #007bff;
+      transform: rotate(0deg);
+    }
+    25% {
+      border-color: #ff6347;
+    }
+    50% {
+      border-color: #32cd32;
+    }
+    75% {
+      border-color: #ffa500;
+    }
+    100% {
+      border-color: #007bff;
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Contenu du profil centré */
+  .profile-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  /* Photo de profil */
+  .profile-picture-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -75px; /* Déplacer la photo vers le haut */
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Animation de flottement */
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Champ pour téléverser une photo */
+  .photo-upload {
+    margin-top: 20px;
+  }
+  
+  .photo-upload input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  /* Informations utilisateur */
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  .profile-name {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .profile-email,
+  .profile-phone,
+  .profile-address,
+  .profile-cin {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Boutons d'action */
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+    

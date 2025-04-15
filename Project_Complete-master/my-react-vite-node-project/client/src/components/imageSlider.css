@@ -1,0 +1,47 @@
+.slider-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.background-slider {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.slider-text {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(34, 47, 226);
+    text-align: center;
+    background: rgba(227, 235, 232, 0.925); 
+    user-select: none;
+    padding: 0px;
+    border-radius: 10px;
+}
+
+.slider-text:hover {
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+}
+
+/* Animation for fading in and out */
+@keyframes fade-in-out {
+    0%, 100% {
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+}
+
+.fade-in-out {
+    animation: fade-in-out 5s infinite;
+}
