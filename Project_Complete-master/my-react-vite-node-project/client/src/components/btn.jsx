@@ -7,7 +7,18 @@ import "./btn.css";
 function Boutoun() {
   const navigate = useNavigate();
   return (
-    <Stack direction={"row"} sx={{ gap: "60px", mt: "90px" }}>
+    <Stack
+      direction={"row"}
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        textAlign: "center",
+        gap: "40px",
+        mt: "90px",
+        flexWrap: "wrap",
+      }}
+    >
       <Button
         onClick={() => {
           navigate("../CreateCompt");
@@ -18,6 +29,7 @@ function Boutoun() {
           color: "white",
           fontSize: "19px",
           width: "240px",
+          minWidth: "240px",
           fontWeight: "bold",
           fontFamily: "serif garamond",
           border: "none",
@@ -46,7 +58,7 @@ function Boutoun() {
           fontFamily: "serif garamond",
           fontSize: "19px",
 
-          width: "240px",
+          minWidth: "240px",
           padding: "12px 24px", // Adjusted padding for consistency
           textTransform: "capitalize",
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",

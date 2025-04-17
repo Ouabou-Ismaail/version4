@@ -45,17 +45,23 @@ const Login = () => {
           ? "/admin-dashboard"
           : staticUser.role === "directeur"
           ? "/directeurLayout"
-          : "/dashboard"
+          : "/profile"
       );
       setLoading(false);
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost/api/login.php", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost/api/login.php",
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true, // OBLIGATOIRE
+        }
+      );
 
       if (response.data.success) {
         const user = response.data.user;
@@ -65,7 +71,7 @@ const Login = () => {
         if (user.role === "directeur") {
           navigate("/directeurLayout");
         } else {
-          navigate("/dashboard");
+          navigate("/profile");
         }
       } else {
         setError(response.data.message || "Email ou mot de passe incorrect");
@@ -94,7 +100,8 @@ const Login = () => {
         className="p-4"
         style={{
           width: "100%",
-          maxWidth: "420px",
+          minWidth: "520px",
+          maxWidth: "540px",
           borderRadius: "20px",
           background: "rgba(255, 255, 255, 0.2)",
           boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)",
@@ -125,11 +132,13 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="exemple@email.com"
+              placeholder="email"
               style={{
                 borderRadius: "10px",
                 backgroundColor: "rgba(255, 255, 255, 0.6)",
                 border: "1px solid #ddd",
+                fontSize: "19px",
+                padding: "14px 10px",
               }}
             />
           </div>
@@ -141,18 +150,25 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="********"
+              placeholder="password"
               style={{
                 borderRadius: "10px",
                 backgroundColor: "rgba(255, 255, 255, 0.6)",
                 border: "1px solid #ddd",
+                fontSize: "19px",
+                padding: "14px 10px",
               }}
             />
           </div>
           <Button
             variant="contained"
             type="submit"
-            sx={{ width: "100%" }}
+            sx={{
+              width: "100%",
+              padding: "16px",
+              marginTop: "16px",
+              fontWeight: "bold",
+            }}
             disabled={loading}
           >
             {loading ? (

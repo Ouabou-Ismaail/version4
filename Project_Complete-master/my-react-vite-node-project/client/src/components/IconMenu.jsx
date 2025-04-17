@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton"; // Corrected import
 import MenuIcon from "@mui/icons-material/Menu";
+import "./IconMenu";
 import {
   Link,
   Box,
@@ -61,7 +62,6 @@ const IconMenu = () => {
               width: "170px",
               height: "80px",
               padding: "5px",
-              marginLeft: "50px",
             }}
           />
           <Box
@@ -69,8 +69,9 @@ const IconMenu = () => {
               display: "flex",
               gap: "20px",
               alignItems: "center",
-              marginRight: "50px",
+              marginRight: "20px",
             }}
+            className="linksHome"
           >
             <Link
               href="#home"
@@ -117,12 +118,27 @@ const IconMenu = () => {
           <Typography
             variant="h3"
             sx={{
-              backgroundColor: "rgba(141, 141, 141, 0.25)",
-              padding: "20px 40px",
-              borderRadius: "10px",
-              fontWeight: "bold",
-              color: "black",
-              fontFamily: "initial",
+              backgroundColor: "rgba(178, 42, 42, 0.15)",
+              padding: "25px 45px",
+              borderRadius: "12px",
+              fontWeight: "700",
+              color: "#2d3748",
+              fontFamily: "'Montserrat', sans-serif",
+              textAlign: "center",
+              letterSpacing: "1px",
+              boxShadow:
+                "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              background:
+                "linear-gradient(145deg, rgba(197, 197, 197, 0.48) 0%, rgba(224, 224, 224, 0.47) 100%)",
+              backdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              textShadow: "1px 1px 2px rgba(163, 163, 163, 0.39)",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-2px)",
+                boxShadow:
+                  "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+              },
             }}
           >
             Bienvenue à IMA ZAGORA-FUTURE!

@@ -24,20 +24,39 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchPatient = async () => {
       try {
         const storedUser = localStorage.getItem("user");
+        console.log("Contenu de localStorage : ", storedUser);
+
         if (!storedUser) {
+          console.log("Token manquant, redirection vers login");
+          navigate("/login");
+          return;
+        }
+
+        const parsedUser = JSON.parse(storedUser);
+        const token = parsedUser?.token;
+        console.log("Token récupéré : ", token);
+
+        if (!token) {
+          setError("Token manquant");
           navigate("/login");
           return;
         }
 
         const response = await axios.get(
           "http://localhost/api/getPatient.php",
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
+
+        console.log("Réponse API : ", response.data);
 
         if (response.data.success) {
           setPatient(response.data.patient);
@@ -45,7 +64,7 @@ const Profile = () => {
           setError(response.data.message || "Erreur lors du chargement");
         }
       } catch (error) {
-        console.error("Erreur:", error);
+        console.error("Erreur :", error);
         if (error.response?.status === 401) {
           localStorage.removeItem("user");
           navigate("/login");
@@ -60,6 +79,11 @@ const Profile = () => {
 
     fetchPatient();
   }, [navigate]);
+
+  // Log de l'état patient
+  useEffect(() => {
+    console.log("Données patient : ", patient);
+  }, [patient]);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -95,30 +119,23 @@ const Profile = () => {
       {/* Navbar */}
       <Navbar className="navbar-custom shadow-sm" expand="lg" fixed="top">
         <Container>
-          <Navbar.Brand href="/dashboard" className="d-flex align-items-center">
+          <Navbar.Brand className="d-flex align-items-center">
             <img
-              src="logo.png"
+              src="/logo.png"
               alt="Logo"
-              style={{ width: "150px", height: "50px" }}
+              style={{
+                width: "170px",
+                height: "80px",
+                marginLeft: "-100px",
+              }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center">
-              <Nav.Link
-                onClick={() => navigate("/take-appointment")}
-                style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
-              >
-                <FaCalendarAlt className="me-1" />
-                Prendre RDV
-              </Nav.Link>
-              <Nav.Link
-                onClick={() => navigate("/AppointmentsList")}
-                style={{ padding: "0.6rem 1.2rem ", marginLeft: "1rem" }}
-              >
-                <FaCalendarCheck className="me-1" />
-                Mes RDV
-              </Nav.Link>
+            <Nav
+              style={{ marginRight: "-100px" }}
+              className="ms-auto align-items-center"
+            >
               <Nav.Link
                 onClick={() => navigate("/profile")}
                 className="active-link"
@@ -127,6 +144,23 @@ const Profile = () => {
                 <FaUser className="me-1" />
                 Profil
               </Nav.Link>
+
+              <Nav.Link
+                onClick={() => navigate("/take-appointment")}
+                style={{ padding: "0.6rem 1.2rem ", marginLeft: "1rem" }}
+              >
+                <FaCalendarAlt className="me-1" />
+                Prendre RDV
+              </Nav.Link>
+
+              <Nav.Link
+                onClick={() => navigate("/AppointmentsList")}
+                style={{ padding: "0.6rem 1.2rem ", marginLeft: "1rem" }}
+              >
+                <FaCalendarCheck className="me-1" />
+                Mes RDV
+              </Nav.Link>
+
               <Nav.Link
                 onClick={handleLogout}
                 style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
@@ -140,7 +174,6 @@ const Profile = () => {
       </Navbar>
 
       {/* Main Content */}
-      {/* ... à l'intérieur de return ... */}
       <div className="main-content container py-5">
         <div className="profile-card card shadow p-4 mt-5">
           <div className="text-center mb-4">
@@ -227,9 +260,10 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* 👇 Bouton centré seul */}
+          {/* Bouton centré */}
           <div className="d-flex justify-content-center mt-5">
             <button
+              style={{ width: "300px" }}
               className="btn btn-primary px-5 py-2 rounded-pill"
               onClick={() => navigate("/edit-profile")}
             >
@@ -243,17 +277,14 @@ const Profile = () => {
       {/* STYLES */}
       <style>{`
         .navbar-custom {
-          background-color:rgb(23, 121, 250) !important;
+          background-color: #3f51b9 !important;
+          padding: 0;
         }
 
         .navbar-custom .nav-link,
         .navbar-custom .navbar-brand {
           color:rgb(214, 213, 220) !important;
           font-weight: 500;
-          textAlign: start;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
         }
 
         .profile-page {

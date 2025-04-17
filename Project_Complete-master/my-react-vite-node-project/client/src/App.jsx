@@ -37,6 +37,7 @@ import Update from "./pages/doctors/Update";
 import DetailAdmin from "./pages/profileAdmin//DetailAdmin";
 import EditAmin from "./pages/profileAdmin/EditAdmin";
 import Statistiques from "./pages/statistiques/Statistiques";
+import DoctorSchedule from "./pages/doctors/DoctorSchedule";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -276,6 +277,16 @@ const App = () => {
             <Doctor doctorsData={doctorsData} setDoctorsData={setDoctorsData} />
           }
         />
+
+        <Route
+          path="/doctors/schedule/:id"
+          element={<DoctorSchedule doctorsData={doctorsData} />}
+        />
+        <Route
+          path="/doctors/schedule/:id/doctors"
+          element={<DoctorSchedule doctorsData={doctorsData} />}
+        />
+
         <Route
           path="/Admin/:category/add/:category"
           element={
@@ -375,7 +386,7 @@ const App = () => {
           path="/take-appointment"
           element={<TakeAppointment departementsData={departementsData} />}
         />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Route>
 

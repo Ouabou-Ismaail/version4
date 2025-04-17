@@ -16,7 +16,7 @@ import {
   FaSignOutAlt,
   FaCalendarAlt,
   FaCalendarCheck,
-  FaEdit
+  FaEdit,
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -130,31 +130,76 @@ const EditProfile = () => {
       {/* Navbar identique au composant Profile */}
       <Navbar className="navbar-custom shadow-sm" expand="lg" fixed="top">
         <Container>
-          <Navbar.Brand href="/dashboard" className="d-flex align-items-center">
+          <Navbar.Brand className="d-flex align-items-center">
             <img
               src="logo.png"
               alt="Logo"
-              className="me-2"
-              style={{ width: "40px", height: "40px", objectFit: "contain" }}
+              style={{ width: "170px", height: "60px", marginLeft: "-100px" }}
             />
-            <span className="fw-bold">Clinique Santé</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center">
-              <Nav.Link onClick={() => navigate("/take-appointment")}>
-                <FaCalendarAlt className="me-1" />
-                Prendre RDV
-              </Nav.Link>
-              <Nav.Link onClick={() => navigate("/AppointmentsList")}>
-                <FaCalendarCheck className="me-1" />
-                Mes RDV
-              </Nav.Link>
-              <Nav.Link onClick={() => navigate("/profile")}>
+            <Nav
+              style={{ marginRight: "-100px" }}
+              className="ms-auto align-items-center"
+            >
+              <Nav.Link
+                onClick={() => navigate("/profile")}
+                className="active-link"
+                style={{
+                  padding: "0.4rem 1.2rem ",
+                  marginLeft: "0.3rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.7rem",
+                  fontSize: "1.1rem",
+                }}
+              >
                 <FaUser className="me-1" />
                 Profil
               </Nav.Link>
-              <Nav.Link onClick={handleLogout}>
+
+              <Nav.Link
+                onClick={() => navigate("/take-appointment")}
+                style={{
+                  padding: "0.4rem 1.2rem ",
+                  marginLeft: "0.3rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.7rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                <FaCalendarAlt className="me-1" />
+                Prendre RDV
+              </Nav.Link>
+
+              <Nav.Link
+                onClick={() => navigate("/AppointmentsList")}
+                style={{
+                  padding: "0.4rem 1.2rem ",
+                  marginLeft: "0.3rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.7rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                <FaCalendarCheck className="me-1" />
+                Mes RDV
+              </Nav.Link>
+
+              <Nav.Link
+                onClick={handleLogout}
+                style={{
+                  padding: "0.4rem 1.2rem ",
+                  marginLeft: "0.3rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.7rem",
+                  fontSize: "1.1rem",
+                }}
+              >
                 <FaSignOutAlt className="me-1" />
                 Déconnexion
               </Nav.Link>
@@ -183,7 +228,10 @@ const EditProfile = () => {
             <div className="row g-4">
               <div className="col-md-6">
                 <div className="info-card card border-0 shadow-sm h-100">
-                  <div className="card-header d-flex align-items-center" style={{ backgroundColor: "#6f42c1", color: "#fff" }}>
+                  <div
+                    className="card-header d-flex align-items-center"
+                    style={{ backgroundColor: "#6f42c1", color: "#fff" }}
+                  >
                     <FaIdCard />
                     <h5 className="mb-0 ms-2">Informations Personnelles</h5>
                   </div>
@@ -240,7 +288,10 @@ const EditProfile = () => {
 
               <div className="col-md-6">
                 <div className="info-card card border-0 shadow-sm h-100">
-                  <div className="card-header d-flex align-items-center" style={{ backgroundColor: "#20c997", color: "#fff" }}>
+                  <div
+                    className="card-header d-flex align-items-center"
+                    style={{ backgroundColor: "#20c997", color: "#fff" }}
+                  >
                     <FaEnvelope />
                     <h5 className="mb-0 ms-2">Contact</h5>
                   </div>
@@ -293,7 +344,10 @@ const EditProfile = () => {
 
               <div className="col-12">
                 <div className="info-card card border-0 shadow-sm h-100">
-                  <div className="card-header d-flex align-items-center" style={{ backgroundColor: "#fd7e14", color: "#fff" }}>
+                  <div
+                    className="card-header d-flex align-items-center"
+                    style={{ backgroundColor: "#fd7e14", color: "#fff" }}
+                  >
                     <FaStethoscope />
                     <h5 className="mb-0 ms-2">Informations de Santé</h5>
                   </div>
@@ -339,8 +393,8 @@ const EditProfile = () => {
                 <FaArrowLeft className="me-2" />
                 Retour
               </button>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="btn btn-primary px-4 py-2 rounded-pill"
               >
                 <FaSave className="me-2" />
@@ -354,13 +408,14 @@ const EditProfile = () => {
       {/* Styles identiques */}
       <style>{`
         .navbar-custom {
-          background-color: #e7dbf9 !important;
+          background-color:#3f51b9 !important;
         }
 
         .navbar-custom .nav-link,
         .navbar-custom .navbar-brand {
-          color: #2b244d !important;
+          color:rgb(255, 255, 255) !important;
           font-weight: 500;
+          
         }
 
         .profile-page {

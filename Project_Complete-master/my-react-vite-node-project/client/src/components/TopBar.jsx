@@ -134,7 +134,10 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
           <Button
             sx={{
               color: theme.palette.grey[100],
-              bgcolor: location.pathname === "/admin-dashboard" ? "gray" : null,
+              bgcolor:
+                location.pathname === "/admin-dashboard"
+                  ? "rgba(201, 201, 201, 0.42)"
+                  : null,
             }}
             onClick={() => {
               navigate("/admin-dashboard");
@@ -156,7 +159,7 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
                     `/detail/${id}/doctors` ||
                     "/add/doctors"
                 ) // Matches /update/{any number}/{any path}
-                  ? "gray"
+                  ? "rgba(201, 201, 201, 0.42)"
                   : null,
             }}
             onClick={() => {
@@ -179,7 +182,7 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
                     `/infermiers/detail/${id}/infermiers` ||
                     "/admin/infermiers/add/infermiers"
                 ) // Matches /update/{any number}/{any path}
-                  ? "gray"
+                  ? "rgba(201, 201, 201, 0.42)"
                   : null,
             }}
             onClick={() => {
@@ -202,7 +205,7 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
                     `/detail/${id}/patients` ||
                     "/admin/patients/add/patients"
                 ) // Matches /update/{any number}/{any path}
-                  ? "gray"
+                  ? "rgba(201, 201, 201, 0.42)"
                   : null,
             }}
             onClick={() => {
@@ -228,7 +231,7 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
                     `/departements/detail/${id}/departements` ||
                     `/admin/departements/add/departements`
                 ) // Matches /update/{any number}/{any path}
-                  ? "gray"
+                  ? "rgba(201, 201, 201, 0.42)"
                   : null,
             }}
             onClick={() => {
@@ -241,7 +244,10 @@ const TopBar = ({ open, handleDrawerOpen, toggleMode }) => {
           <Button
             sx={{
               color: theme.palette.grey[100],
-              bgcolor: location.pathname === "/statistiques" ? "gray" : null,
+              bgcolor:
+                location.pathname === "/statistiques"
+                  ? "rgba(201, 201, 201, 0.42)"
+                  : null,
             }}
             onClick={() => {
               navigate("/statistiques");

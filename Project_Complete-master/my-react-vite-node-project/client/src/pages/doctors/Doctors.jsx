@@ -208,8 +208,10 @@ const Doctors = ({ doctorsData, setDoctorsData }) => {
               <StyledTableCell align="center">Age</StyledTableCell>
               <StyledTableCell align="center">Adresse</StyledTableCell>
               <StyledTableCell align="center">Département</StyledTableCell>
+              <StyledTableCell align="center">EMPLOI DU TEMPS</StyledTableCell>
               <StyledTableCell align="center">Opérations</StyledTableCell>
             </TableRow>
+                
           </TableHead>
           <TableBody>
             {doctorsFiltered.length > 0 ? (
@@ -269,6 +271,24 @@ const Doctors = ({ doctorsData, setDoctorsData }) => {
                   >
                     {row.departement}
                   </StyledTableCell>
+
+                  <StyledTableCell
+                    sx={{ color: theme.palette.text.primary }}
+                    align="center"
+                  >
+                    <Button
+                      onClick={() =>
+                        navigate(`/doctors/schedule/${row.id}/doctors`)
+                      }
+                      sx={{
+                        textAlign: "center",
+                        color: theme.palette.primary.main,
+                      }}
+                    >
+                      Voir emploi
+                    </Button>
+                  </StyledTableCell>
+
                   <StyledTableCell align="center">
                     <Button
                       onClick={() =>

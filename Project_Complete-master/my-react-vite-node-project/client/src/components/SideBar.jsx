@@ -187,14 +187,7 @@ const SlidBar = ({ open, handleDrawerClose, toggleMode }) => {
                 {
                   minHeight: 48,
                   px: 2.5,
-                  bgcolor:
-                    location.pathname === item.path ||
-                    location.pathname === `${item.path}/update/${id}` ||
-                    location.pathname === `${item.path}/detail/${id}` ||
-                    location.pathname === `/admin${item.path}/add` ||
-                    /\/update\/\d+\/.*$/.test(location.pathname)
-                      ? "gray"
-                      : null,
+                  bgcolor: null,
                   transition: "0.9s",
                 },
                 open

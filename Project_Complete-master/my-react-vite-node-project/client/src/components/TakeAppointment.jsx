@@ -102,7 +102,7 @@ const TakeAppointment = () => {
             date,
             time: selectedTime,
             location,
-            patientId: localStorage.getItem("patientId") || 1,
+            patientId: localStorage.getItem("idPatient") || 1,
           }),
         }
       );
@@ -131,15 +131,28 @@ const TakeAppointment = () => {
         <Container>
           <Navbar.Brand href="/dashboard" className="d-flex align-items-center">
             <img
-              src="logo.png"
+              src="/logo.png"
               alt="Logo"
-              className="me-2"
-              style={{ width: "140px", height: "50px", objectFit: "contain" }}
+              style={{
+                width: "170px",
+                height: "80px",
+                marginLeft: "-100px",
+              }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center">
+            <Nav
+              className="ms-auto align-items-center"
+              style={{ marginRight: "-100px" }}
+            >
+              <Nav.Link
+                onClick={() => navigate("/profile")}
+                style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
+              >
+                <FaUser className="me-1" /> Mon Profil
+              </Nav.Link>
+
               <Nav.Link
                 onClick={() => navigate("/take-appointment")}
                 className="active-link"
@@ -153,12 +166,7 @@ const TakeAppointment = () => {
               >
                 <FaCalendarCheck className="me-1" /> Mes RDV
               </Nav.Link>
-              <Nav.Link
-                onClick={() => navigate("/profile")}
-                style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
-              >
-                <FaUser className="me-1" /> Mon Profil
-              </Nav.Link>
+
               <Nav.Link
                 onClick={handleLogout}
                 style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
@@ -170,8 +178,8 @@ const TakeAppointment = () => {
         </Container>
       </Navbar>
 
-      <div className="main-content container py-5">
-        <h2 className="text-center mb-4" style={{ paddingTop: "80px" }}>
+      <div className="main-content container py-5 ">
+        <h2 className="text-center mb-4" style={{ marginTop: "80px" }}>
           Réserver un Rendez-vous
         </h2>
 
@@ -297,7 +305,8 @@ const TakeAppointment = () => {
 
       <style>{`
          .navbar-custom {
-          background-color:rgb(23, 121, 250) !important;
+          background-color:#3f51b9 !important;
+          padding: 0;
         }
 
         .navbar-custom .nav-link,

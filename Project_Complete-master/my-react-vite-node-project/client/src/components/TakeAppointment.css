@@ -1,9 +1,12 @@
-body{
-    background-color: #121212;
-    height: 100vh;
-   
-    
-
-
-
+body {
+  background-color: #121212;
+  height: 100vh;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  height: 400px;
+  background-color: #121212;
 }

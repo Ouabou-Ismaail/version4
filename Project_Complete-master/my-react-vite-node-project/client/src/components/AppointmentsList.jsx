@@ -400,12 +400,27 @@ const AppointmentsList = () => {
               src="logo.png"
               alt="Logo"
               className="me-2"
-              style={{ width: "150px", height: "50px", objectFit: "contain" }}
+              style={{
+                width: "150px",
+                height: "50px",
+                objectFit: "contain",
+                marginLeft: "-100px",
+              }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center">
+            <Nav
+              className="ms-auto align-items-center"
+              style={{ marginRight: "-100px" }}
+            >
+              <Nav.Link
+                onClick={() => navigate("/profile")}
+                style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
+              >
+                <FaUser className="me-1" />
+                Profil
+              </Nav.Link>
               <Nav.Link
                 onClick={() => navigate("/take-appointment")}
                 style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
@@ -421,13 +436,7 @@ const AppointmentsList = () => {
                 <FaCalendarCheck className="me-1" />
                 Mes RDV
               </Nav.Link>
-              <Nav.Link
-                onClick={() => navigate("/profile")}
-                style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
-              >
-                <FaUser className="me-1" />
-                Profil
-              </Nav.Link>
+
               <Nav.Link
                 onClick={handleLogout}
                 style={{ padding: "0.4rem 1.2rem ", marginLeft: "0.3rem" }}
@@ -486,7 +495,6 @@ const AppointmentsList = () => {
                       <th style={{ width: "160px" }}>Date</th>
                       <th style={{ width: "160px" }}>Heure</th>
                       <th style={{ width: "160px" }}>Service</th>
-                      <th style={{ width: "160px" }}>Statut</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -504,15 +512,7 @@ const AppointmentsList = () => {
                           <td style={{ paddingTop: "30px" }}>{rdv.date}</td>
                           <td style={{ paddingTop: "30px" }}>{rdv.time}</td>
                           <td style={{ paddingTop: "30px" }}>{rdv.location}</td>
-                          <td style={{ paddingTop: "30px" }}>
-                            {isEditable ? (
-                              <span className="badge bg-success">À venir</span>
-                            ) : (
-                              <span className="badge bg-warning text-dark">
-                                Passé
-                              </span>
-                            )}
-                          </td>
+
                           <td>
                             <div className="d-flex flex-wrap gap-2">
                               <Button
@@ -611,7 +611,7 @@ const AppointmentsList = () => {
       {/* Styles */}
       <style>{`
           .navbar-custom {
-          background-color:rgb(23, 121, 250) !important;
+          background-color:#3f51b9 !important;
         }
 
         .navbar-custom .nav-link,
